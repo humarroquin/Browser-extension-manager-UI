@@ -1,0 +1,183 @@
+/* font files */
+
+/* CSS RESET — Josh Comeau */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* VARIABLES */
+:root {
+  /* colors */
+  --clr-neutral-900: hsl(227, 75%, 14%);
+  --clr-neutral-800: hsl(226, 25%, 17%);
+  --clr-neutral-700: hsl(225, 23%, 24%);
+  --clr-neutral-600: hsl(226, 11%, 37%);
+  --clr-neutral-300: hsl(0, 0%, 78%);
+  --clr-neutral-200: hsl(217, 61%, 90%);
+  --clr-neutral-100: hsl(0, 0%, 93%);
+  --clr-neutral-0: hsl(200, 60%, 99%);
+  --clr-red-700: hsl(3, 77%, 44%);
+  --clr-red-500: hsl(3, 71%, 56%);
+  --clr-red-400: hsl(3, 86%, 64%);
+  --clr-light-gradient: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%);
+  --clr-dark-gradient: linear-gradient(180deg, #04091b 0%, #091540 100%);
+
+  /* font family */
+  --ff-headings: "Manrope", "Segoe UI", sans-serif;
+  --ff-body: "Manrope", "Segoe UI", sans-serif;
+
+  /* font weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* fixed font sizes */
+  --fs-15: 0.9375rem;
+  --fs-18: 1.125rem;
+
+  /* spacing */
+  --spacing-0: 0rem;
+  --spacing-025: 0.125rem; /* 2px */
+  --spacing-050: 0.25rem; /* 4px */
+  --spacing-075: 0.375rem; /* 6px */
+  --spacing-100: 0.5rem; /* 8px */
+  --spacing-125: 0.625rem; /* 10px */
+  --spacing-150: 0.75rem; /* 12px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-250: 1.25rem; /* 20px */
+  --spacing-300: 1.5rem; /* 24px */
+  --spacing-400: 2rem; /* 32px */
+  --spacing-500: 2.5rem; /* 40px */
+  --spacing-600: 3rem; /* 48px */
+  --spacing-800: 4rem; /* 64px */
+  --spacing-1000: 5rem; /* 80px */
+
+  /* border-radius */
+  --radius-0: 0rem;
+  --radius-4: 0.25rem; /* 4px */
+  --radius-6: 0.375rem; /* 6px */
+  --radius-8: 0.5rem; /* 8px */
+  --radius-10: 0.625rem; /* 10px */
+  --radius-12: 0.75rem; /* 12px */
+  --radius-16: 1rem; /* 16px */
+  --radius-20: 1.25rem; /* 20px */
+  --radius-24: 1.5rem; /* 24px */
+  --radius-full: 999px; /* Full rounding */
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.primary-heading,
+.secondary-heading,
+.tertiary-heading {
+  font-family: var(--ff-headings);
+  font-weight: var(--fw--bold);
+}
+.primary-heading {
+  font-size: 2.125rem; /* 34px */
+  line-height: 1; /* 100% */
+  letter-spacing: -0.0625rem; /* -1px */
+}
+.secondary-heading {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.2; /* 120% */
+  letter-spacing: -0.0125rem; /* -0.2px */
+}
+
+.button {
+  font-family: var(--ff-body);
+}
+.button-remove {
+  font-size: 1rem; /* 16px */
+  line-height: 1.4; /* 140% */
+  letter-spacing: -0.03125rem; /* -0.5px */
+  font-weight: var(--fw-medium);
+}
+.button-controls {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.4; /* 140% */
+  letter-spacing: -0.01875rem; /* -0.3px */
+  font-weight: var(--fw-regular);
+}
+
+.grid-3cols {
+  display: grid;
+}
+
+@media (max-width: 50em) {
+  .grid-2cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container {
+  --max-width: 75rem;
+  --padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--padding) * 2));
+  margin-inline: auto;
+}
+
+/* PAGE STYLES */
+
+/* general styles */
+body {
+  /* css reset */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* css reset */
+
+  font-size: 1rem;
+  font-family: var(--ff-body);
+  font-weight: var(--fw-regular);
+  font-size: 1rem; /* 16px */
+  line-height: 1.4; /* 140% */
+  letter-spacing: -0.03125rem; /* -0.5px */
+}
