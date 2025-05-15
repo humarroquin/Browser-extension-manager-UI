@@ -1,4 +1,27 @@
 /* font files */
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/noto-sans-v39-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/noto-sans-v39-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/noto-sans-v39-latin-700.woff2") format("woff2");
+}
 
 /* CSS RESET — Josh Comeau */
 *,
@@ -60,8 +83,8 @@ h6 {
   --clr-dark-gradient: linear-gradient(180deg, #04091b 0%, #091540 100%);
 
   /* font family */
-  --ff-headings: "Manrope", "Segoe UI", sans-serif;
-  --ff-body: "Manrope", "Segoe UI", sans-serif;
+  --ff-headings: "Noto Sans", Arial, Helvetica, sans-serif;
+  --ff-body: "Noto Sans", Arial, Helvetica, sans-serif;
 
   /* font weights */
   --fw-regular: 400;
