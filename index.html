@@ -16,15 +16,24 @@
   <body>
     <header class="header | container display-flex">
       <div>
-        <img src="./assets/images/logo.svg" alt="Extensions" class="logo" />
+        <img
+          id="logo"
+          src="./assets/images/logo.svg"
+          alt="Extensions"
+          class="logo"
+        />
       </div>
-      <button class="button-dark-theme">
-        <img src="./assets/images/icon-moon.svg" alt="" />
+      <button id="dark-theme-btn" class="button-dark-theme">
+        <img
+          id="dark-theme-btn-icon"
+          src="./assets/images/icon-moon.svg"
+          alt=""
+        />
       </button>
     </header>
     <main class="container">
       <section class="extension-controls display-flex">
-        <h1>Extensions List</h1>
+        <h1 class="primary-heading">Extensions List</h1>
         <div class="extension-controls__buttons-wrapper display-flex">
           <button class="button-controls active">All</button>
           <button class="button-controls">Active</button>
@@ -36,7 +45,7 @@
           <div class="card-top display-flex">
             <img src="./assets/images/logo-devlens.svg" alt="" />
             <div class="card-info">
-              <h2>DevLens</h2>
+              <h2 class="secondary-heading">DevLens</h2>
               <p>
                 Quickly inspect page layouts and visualize element boundaries.
                 Remove

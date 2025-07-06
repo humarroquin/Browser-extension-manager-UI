@@ -24,10 +24,6 @@
 }
 
 /* CSS RESET — Josh Comeau */
-html {
-  background-color: hsl(215, 74%, 95%);
-}
-
 *,
 *::before,
 *::after {
@@ -83,15 +79,10 @@ h6 {
   --clr-red-700: hsl(3, 77%, 44%);
   --clr-red-500: hsl(3, 71%, 56%);
   --clr-red-400: hsl(3, 86%, 64%);
-  --clr-light-gradient: linear-gradient(
+  --clr-bg-gradient: linear-gradient(
     180deg,
     hsl(215, 74%, 95%) 0%,
     hsl(171, 62%, 96%) 100%
-  );
-  --clr-dark-gradient: linear-gradient(
-    180deg,
-    hsl(227, 74%, 6%) 0%,
-    hsl(227, 75%, 14%) 100%
   );
 
   /* font family */
@@ -152,6 +143,8 @@ h6 {
 .tertiary-heading {
   font-family: var(--ff-headings);
   font-weight: var(--fw--bold);
+  color: var(--clr-neutral-900);
+  font-weight: 700;
 }
 .primary-heading {
   font-size: 2.125rem; /* 34px */
@@ -169,6 +162,7 @@ h6 {
 .button-dark-theme {
   font-family: var(--ff-body);
   cursor: pointer;
+  color: var(--clr-neutral-900);
 }
 .button-remove {
   font-size: 1rem; /* 16px */
@@ -189,6 +183,7 @@ h6 {
   background-color: var(--clr-neutral-0);
   border: 0;
   padding: 10px 20px;
+  border: 1px solid var(--clr-neutral-200);
 }
 .button-controls.active {
   background-color: var(--clr-red-400);
@@ -219,6 +214,21 @@ h6 {
   margin-inline: auto;
 }
 
+/* DARK MODE */
+.dark {
+  --clr-bg-gradient: linear-gradient(
+    180deg,
+    hsl(227, 74%, 6%) 0%,
+    hsl(227, 75%, 14%) 100%
+  );
+  --clr-neutral-0: hsl(226, 25%, 17%);
+  --clr-neutral-100: hsl(225, 23%, 24%);
+  --clr-neutral-200: hsl(226, 11%, 37%);
+  --clr-neutral-300: hsl(226, 11%, 37%);
+  --clr-neutral-900: hsl(200, 60%, 99%);
+  --clr-neutral-600: hsl(0, 0%, 78%);
+}
+
 /* PAGE STYLES */
 
 /* general styles */
@@ -233,9 +243,10 @@ body {
   font-size: 1rem;
   line-height: 1.4;
   letter-spacing: -0.03125rem; /* -0.5px */
+  color: var(--clr-neutral-600);
 
   min-height: 100vh;
-  background: var(--clr-light-gradient);
+  background: var(--clr-bg-gradient);
   background-repeat: no-repeat;
   background-size: cover;
 }
