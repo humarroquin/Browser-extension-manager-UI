@@ -199,7 +199,9 @@ h6 {
 
 .grid-3cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1rem;
 }
 
 .display-flex {
@@ -268,10 +270,13 @@ body {
 .extension-controls {
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--spacing-400);
 }
 .extension-controls__buttons-wrapper {
   gap: var(--spacing-150);
+}
+
+.extension-cards {
+  padding-block: var(--spacing-400);
 }
 
 .card {
