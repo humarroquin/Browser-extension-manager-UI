@@ -36,7 +36,12 @@ fetch("data.json")
             <button class="button-remove">Remove</button>
             <div class="toggle-container">
               <label>
-                <input type="checkbox" id="toggle" name="toggle" />
+                <input 
+                type="checkbox" 
+                id="toggle" 
+                name="toggle"
+                ${card.isActive ? "checked" : ""}
+                 />
                 <div class="toggle-wrapper"></div>
                 <span class="sr-only">Activate extension</span>
               </label>
@@ -45,14 +50,6 @@ fetch("data.json")
         </div>`;
     });
 
+    // add cards to the html
     cardsContainer.innerHTML = card.join("");
   });
-
-// fetch('data.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data); // See the whole object
-//     document.querySelector('#title').textContent = data.title;
-//     document.querySelector('#description').textContent = data.description;
-//   })
-//   .catch(error => console.error('Could not load JSON:', error));
