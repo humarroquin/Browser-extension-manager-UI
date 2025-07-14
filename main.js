@@ -52,4 +52,13 @@ fetch("data.json")
 
     // add cards to the html
     cardsContainer.innerHTML = card.join("");
+
+    // remove cards
+    const removeBtns = document.querySelectorAll(".button-remove");
+    removeBtns.forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".card");
+        card.style.display = "none";
+      });
+    });
   });
