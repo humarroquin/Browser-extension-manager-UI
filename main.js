@@ -1,5 +1,6 @@
 "use strict";
 
+// dark theme
 const darkThemeButton = document.getElementById("dark-theme-btn");
 const darkThemeButtonIcon = document.getElementById("dark-theme-btn-icon");
 const logo = document.getElementById("logo");
@@ -18,6 +19,7 @@ darkThemeButton.addEventListener("click", () => {
     : "./assets/images/logo.svg";
 });
 
+// pulling data from the JSON file
 fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
@@ -47,18 +49,44 @@ fetch("data.json")
               </label>
             </div>
           </div>
+          <div class="delete-warning">
+            <p>Are you sure you want to remove this extension?</p>
+            <div class="btn-wrapper">
+              <button class="button-remove active button-confirm">Confirm</button>
+              <button class="button-remove button-cancel">Cancel</button>
+            </div>
+          </div>
         </div>`;
     });
 
     // add cards to the html
     cardsContainer.innerHTML = card.join("");
 
-    // remove cards
+    // show warning
     const removeBtns = document.querySelectorAll(".button-remove");
+    const cancelBtns = document.querySelectorAll(".button-cancel");
+    const confirmBtns = document.querySelectorAll(".button-confirm");
+
     removeBtns.forEach((button) => {
       button.addEventListener("click", () => {
         const card = button.closest(".card");
-        card.style.display = "none";
+        const warningMessage = card.querySelector(".delete-warning");
+        warningMessage.classList.add("show");
+      });
+    });
+
+    cancelBtns.forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".card");
+        const warningMessage = card.querySelector(".delete-warning");
+        warningMessage.classList.remove("show");
+      });
+    });
+
+    confirmBtns.forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".card");
+        card.remove();
       });
     });
   });

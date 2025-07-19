@@ -185,7 +185,8 @@ h6 {
   padding: 10px 20px;
   border: 1px solid var(--clr-neutral-200);
 }
-.button-controls.active {
+.button-controls.active,
+.button-remove.active {
   background-color: var(--clr-red-400);
   color: var(--clr-neutral-0);
 }
@@ -283,6 +284,9 @@ body {
   background-color: var(--clr-neutral-0);
   border-radius: var(--radius-20);
   padding: 20px;
+
+  /* warning */
+  position: relative;
 }
 .card-top {
   gap: var(--spacing-200);
@@ -291,6 +295,26 @@ body {
 .card-bottom {
   align-items: center;
   justify-content: space-between;
+}
+
+/* delete warning */
+.delete-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  inset: 0;
+  border-radius: inherit;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  display: none;
+}
+
+.delete-warning.show {
+  display: flex;
 }
 
 /* toggle switch styles */
