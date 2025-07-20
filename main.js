@@ -5,6 +5,10 @@ const darkThemeButton = document.getElementById("dark-theme-btn");
 const darkThemeButtonIcon = document.getElementById("dark-theme-btn-icon");
 const logo = document.getElementById("logo");
 let cardsContainer = document.getElementById("cards-container");
+const buttonAll = document.querySelector(".button-all");
+const buttonActive = document.querySelector(".button-active");
+const buttonInactive = document.querySelector(".button-inactive");
+const buttonControls = document.querySelectorAll(".button-controls");
 
 darkThemeButton.addEventListener("click", () => {
   document.documentElement.classList.toggle("dark");
@@ -19,12 +23,20 @@ darkThemeButton.addEventListener("click", () => {
     : "./assets/images/logo.svg";
 });
 
-// pulling data from the JSON file
+// render all data
+let allData = [];
+
 fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
-    const card = data.map((card) => {
-      return ` <div class="card">
+    allData = data;
+    renderData(allData);
+  });
+
+// render based on type of data
+function renderData(data) {
+  const card = data.map((card) => {
+    return ` <div class="card">
           <div class="card-top display-flex">
             <img src="${card.logo}" alt="" />
             <div class="card-header">
@@ -40,8 +52,9 @@ fetch("data.json")
               <label>
                 <input 
                 type="checkbox" 
-                id="toggle" 
-                name="toggle"
+                class="toggle"
+                id="toggle-${card.id}" 
+                name="toggle-${card.id}"
                 ${card.isActive ? "checked" : ""}
                  />
                 <div class="toggle-wrapper"></div>
@@ -57,36 +70,82 @@ fetch("data.json")
             </div>
           </div>
         </div>`;
-    });
+  });
 
-    // add cards to the html
-    cardsContainer.innerHTML = card.join("");
+  // add cards to the html
+  cardsContainer.innerHTML = card.join("");
 
-    // show warning
-    const removeBtns = document.querySelectorAll(".button-remove");
-    const cancelBtns = document.querySelectorAll(".button-cancel");
-    const confirmBtns = document.querySelectorAll(".button-confirm");
+  // show warning
+  warningScreen();
+}
 
-    removeBtns.forEach((button) => {
-      button.addEventListener("click", () => {
-        const card = button.closest(".card");
-        const warningMessage = card.querySelector(".delete-warning");
-        warningMessage.classList.add("show");
-      });
-    });
+function warningScreen() {
+  const removeBtns = document.querySelectorAll(".button-remove");
+  const cancelBtns = document.querySelectorAll(".button-cancel");
+  const confirmBtns = document.querySelectorAll(".button-confirm");
 
-    cancelBtns.forEach((button) => {
-      button.addEventListener("click", () => {
-        const card = button.closest(".card");
-        const warningMessage = card.querySelector(".delete-warning");
-        warningMessage.classList.remove("show");
-      });
-    });
+  removeBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".card");
+      const warningMessage = card.querySelector(".delete-warning");
 
-    confirmBtns.forEach((button) => {
-      button.addEventListener("click", () => {
-        const card = button.closest(".card");
-        card.remove();
-      });
+      const allWarningMessages =
+        document.getElementsByClassName("delete-warning");
+      for (let warning of allWarningMessages) {
+        warning.classList.remove("show");
+      }
+
+      warningMessage.classList.add("show");
     });
   });
+
+  cancelBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".card");
+      const warningMessage = card.querySelector(".delete-warning");
+      warningMessage.classList.remove("show");
+    });
+  });
+
+  confirmBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".card");
+      card.remove();
+    });
+  });
+}
+
+buttonAll.addEventListener("click", () => {
+  renderData(allData);
+});
+
+buttonActive.addEventListener("click", () => {
+  const activeItems = allData.filter((item) => item.isActive);
+  renderData(activeItems);
+});
+
+buttonInactive.addEventListener("click", () => {
+  const inactiveItems = allData.filter((item) => !item.isActive);
+  renderData(inactiveItems);
+});
+
+// prevent default scroll
+cardsContainer.addEventListener("click", (e) => {
+  if (e.target.closest("label")) {
+    e.preventDefault(); // Prevent label default scroll/focus behavior
+    const input = e.target
+      .closest("label")
+      .querySelector("input[type=checkbox]");
+    if (input) input.checked = !input.checked; // Toggle checkbox manually
+  }
+});
+
+buttonControls.forEach((button) => {
+  button.addEventListener("click", () => {
+    const controls = document.getElementsByClassName("button-controls");
+    for (let button of controls) {
+      button.classList.remove("active");
+    }
+    button.classList.add("active");
+  });
+});
