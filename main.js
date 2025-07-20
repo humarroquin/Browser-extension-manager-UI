@@ -89,11 +89,9 @@ function warningScreen() {
       const card = button.closest(".card");
       const warningMessage = card.querySelector(".delete-warning");
 
-      const allWarningMessages =
-        document.getElementsByClassName("delete-warning");
-      for (let warning of allWarningMessages) {
-        warning.classList.remove("show");
-      }
+      document
+        .querySelectorAll(".delete-warning")
+        .forEach((el) => el.classList.remove("show"));
 
       warningMessage.classList.add("show");
     });
@@ -142,10 +140,10 @@ cardsContainer.addEventListener("click", (e) => {
 
 buttonControls.forEach((button) => {
   button.addEventListener("click", () => {
-    const controls = document.getElementsByClassName("button-controls");
-    for (let button of controls) {
-      button.classList.remove("active");
-    }
+    document
+      .querySelectorAll(".button-controls")
+      .forEach((el) => el.classList.remove("active"));
+
     button.classList.add("active");
   });
 });
